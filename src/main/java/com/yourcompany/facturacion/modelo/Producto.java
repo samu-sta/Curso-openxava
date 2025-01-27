@@ -4,7 +4,6 @@ import java.math.*;
 
 import javax.persistence.*;
 
-import org.apache.logging.log4j.core.config.plugins.validation.constraints.Required;
 import org.openxava.annotations.*;
 
 import lombok.*;
@@ -33,5 +32,9 @@ public class Producto {
      
     @TextArea
     String observaciones;
+    
+    @ManyToOne(fetch=FetchType.LAZY)
+    @DescriptionsList
+    Autor autor;
  
 }
