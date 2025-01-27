@@ -2,7 +2,8 @@ package com.yourcompany.facturacion.modelo;
 
 import javax.persistence.*;
 
-import org.apache.logging.log4j.core.config.plugins.validation.constraints.*;
+import org.apache.logging.log4j.core.config.plugins.validation.constraints.Required;
+import org.openxava.annotations.*;
 
 import lombok.*;
 
@@ -17,5 +18,8 @@ public class Cliente {
     @Column(length=50)
     @Required
     String nombre;
+    
+    @Embedded @NoFrame
+    private Direccion direccion;
  
 }
