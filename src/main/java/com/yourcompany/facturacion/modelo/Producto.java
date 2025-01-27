@@ -36,5 +36,11 @@ public class Producto {
     @ManyToOne(fetch=FetchType.LAZY)
     @DescriptionsList
     Autor autor;
+
+
+    public String getObservaciones(){
+        if (observaciones == null) return "Todavia sin observaciones";
+        return observaciones;
+    }
  
 }
