@@ -58,6 +58,7 @@ abstract public class DocumentoComercial extends Identificable{
     Collection<Detalle> detalles;
     
     @Digits(integer=2, fraction=0)
+    @DefaultValueCalculator(CalculadorPorcentajeIVA.class)
     BigDecimal porcentajeIVA;
        
     @ReadOnly
