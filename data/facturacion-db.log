@@ -1,2 +1,4 @@
 /*C3*/SET SCHEMA PUBLIC
 DISCONNECT
+/*C4*/SET SCHEMA PUBLIC
+alter table DocumentoComercial_detalles add column precioPorUnidad numeric(19,2)
