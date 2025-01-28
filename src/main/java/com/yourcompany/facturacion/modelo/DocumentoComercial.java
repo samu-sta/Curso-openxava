@@ -86,5 +86,10 @@ abstract public class DocumentoComercial extends Identificable{
     @Calculation("sum(detalles.importe) + iva")    
     BigDecimal importeTotal;
     
+    @org.hibernate.annotations.Formula("IMPORTETOTAL * 0.10")
+    @Setter(AccessLevel.NONE)
+    @Money
+    BigDecimal beneficioEstimado;
+    
     
 }

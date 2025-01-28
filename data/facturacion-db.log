@@ -1,4 +1,0 @@
-/*C3*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C4*/SET SCHEMA PUBLIC
-alter table DocumentoComercial add column diasEntrega INTEGER DEFAULT 1
