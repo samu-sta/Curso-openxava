@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import org.openxava.annotations.*;
+import org.openxava.util.*;
 
 import lombok.*;
 
@@ -29,6 +30,7 @@ members=
 //	        @PropertyValue(name="factura"), // al validador antes de
 //        @PropertyValue(name="entregado") // ejecutar la validación
 //	})
+//@RemoveValidator(com.tuempresa.facturacion.validadores.ValidadorBorrarPedido.class)
 public class Pedido extends DocumentoComercial {
 	@ManyToOne 
 	@ReferenceView("SinClienteNiPedidos")
@@ -86,6 +88,15 @@ public class Pedido extends DocumentoComercial {
 	)
 	private boolean isEntregadoParaEstarEnFactura() {
 	    return factura == null || isEntregado();
+	}
+	
+	@PreRemove
+	private void validarPreBorrar() {
+	    if (factura != null) { 
+	        throw new javax.validation.ValidationException(
+	            XavaResources.getString(
+	                "no_puede_borrar_pedido_con_factura"));
+	    }
 	}
 
 }
