@@ -51,6 +51,8 @@ abstract public class DocumentoComercial extends Identificable{
     @Required
     @DefaultValueCalculator(CurrentLocalDateCalculator.class)
     LocalDate fecha;
+    
+    
  
     @TextArea
     String observaciones;

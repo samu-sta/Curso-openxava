@@ -25,6 +25,8 @@ public class Producto {
     
     @Money
     BigDecimal precio; 
+    
+    
      
     @Files 
     @Column(length=32) 
