@@ -12,4 +12,6 @@ public @interface ISBN {
     Class<?>[] groups() default{};
     Class<? extends Payload>[] payload() default{};
     String message() default "isbn_invalido";
+    
+    boolean buscar() default true;
 }
