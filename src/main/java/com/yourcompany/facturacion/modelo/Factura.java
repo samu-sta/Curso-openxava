@@ -24,6 +24,7 @@ public class Factura extends DocumentoComercial{
 	
 	@OneToMany(mappedBy="factura")
 	@CollectionView("SinClienteNiFactura")
+    @AddAction("Factura.anyadirPedidos")
     Collection<Pedido> pedidos;
 
     public static Factura crearDesdePedidos(Collection<Pedido> pedidos)
