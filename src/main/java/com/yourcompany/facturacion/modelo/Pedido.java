@@ -23,14 +23,16 @@ members=
     "observaciones"
 )
 //@EntityValidator(
-//	    value=com.tuempresa.facturacion.validadores.ValidadorEntregadoParaEstarEnFactura.class, // Clase con la lógica de validación
+//	    value=com.tuempresa.facturacion.validadores.ValidadorEntregadoParaEstarEnFactura.class, // Clase con la lï¿½gica de validaciï¿½n
 //	    properties= {
 //	        @PropertyValue(name="anyo"), // El contenido de estas propiedades
 //	        @PropertyValue(name="numero"), // se mueve desde la entidad 'Pedido'
 //	        @PropertyValue(name="factura"), // al validador antes de
-//        @PropertyValue(name="entregado") // ejecutar la validación
+//        @PropertyValue(name="entregado") // ejecutar la validaciï¿½n
 //	})
 //@RemoveValidator(com.tuempresa.facturacion.validadores.ValidadorBorrarPedido.class)
+@Tab(baseCondition = "${eliminado} = false")
+@Tab(name="Eliminado", baseCondition = "${eliminado} = true")
 public class Pedido extends DocumentoComercial {
 	@ManyToOne 
 	@ReferenceView("SinClienteNiPedidos")
@@ -98,5 +100,10 @@ public class Pedido extends DocumentoComercial {
 	                "no_puede_borrar_pedido_con_factura"));
 	    }
 	}
+
+	public void setEliminado(boolean eliminado) {
+        if (eliminado) validarPreBorrar(); // Llamamos a la validaciÃ³n explÃ­citamente
+        super.setEliminado(eliminado);
+    }
 
 }
