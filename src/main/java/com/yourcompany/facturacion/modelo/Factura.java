@@ -18,9 +18,12 @@ members=
     "detalles;" +
     "observaciones"
 )
+@Tab(baseCondition = "${eliminado} = false")
+@Tab(name="Eliminado", baseCondition = "${eliminado} = true")
 public class Factura extends DocumentoComercial{
 	
 	@OneToMany(mappedBy="factura")
 	@CollectionView("SinClienteNiFactura")
     Collection<Pedido> pedidos;
+	
 }
