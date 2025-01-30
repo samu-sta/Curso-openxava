@@ -90,6 +90,10 @@ abstract public class DocumentoComercial extends Eliminable{
     @Setter(AccessLevel.NONE)
     @Money
     BigDecimal beneficioEstimado;
+
+    public String toString() {
+        return anyo + "/" + numero;
+    }
     
     
 }
