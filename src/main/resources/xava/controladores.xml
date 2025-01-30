@@ -55,11 +55,35 @@
     </controlador>
     
     <controlador nombre="Papelera">
-    <accion nombre="restaurar" modo="list"
-        clase="com.tuempresa.facturacion.acciones.EliminarSeleccionadoParaFacturacion">
-        <poner propiedad="restaurar" valor="true"/> <!-- Pone la propiedad restaurar a true -->
-            <!-- antes de llamar al método execute() de la acción -->
-    </accion>
-</controlador>
+        <accion nombre="restaurar" modo="list"
+            clase="com.tuempresa.facturacion.acciones.EliminarSeleccionadoParaFacturacion">
+            <poner propiedad="restaurar" valor="true"/> <!-- Pone la propiedad restaurar a true -->
+                <!-- antes de llamar al método execute() de la acción -->
+        </accion>
+    </controlador>
+
+    <controlador nombre="Pedido">
+        <hereda-de controlador="Facturacion"/> <!-- Para tener las acciones estándar -->
+
+        <accion nombre="crearFactura" modo="detail"
+            clase="com.tuempresa.facturacion.acciones.CrearFacturaDesdePedido"/>
+        <!-- modo="detail" : Sólo en modo detalle -->
+        
+        <accion nombre="crearFacturaDesdePedidosSeleccionados"
+            modo="list"
+            clase="com.tuempresa.facturacion.acciones.CrearFacturaDesdePedidosSeleccionados"/>
+
+    </controlador>
+
+    <controlador nombre="EdicionFactura">
+
+        <accion nombre="grabar"
+            clase="com.tuempresa.facturacion.acciones.GrabarFactura"
+            atajo-de-teclado="Control S"/>
+            
+        <accion nombre="volver"
+            clase="org.openxava.actions.CancelAction"/>
+            
+    </controlador>
     
 </controladores>
