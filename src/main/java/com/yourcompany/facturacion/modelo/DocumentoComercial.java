@@ -26,7 +26,8 @@ import lombok.*;
 )
 abstract public class DocumentoComercial extends Eliminable{
  
-    @Column(length=4)
+	@SearchKey
+	@Column(length=4)
     @DefaultValueCalculator(CurrentYearCalculator.class)
     int anyo;
     
@@ -41,6 +42,7 @@ abstract public class DocumentoComercial extends Eliminable{
         this.numero = ultimoNumero == null ? 1 : ultimoNumero + 1;
     }
  
+    @SearchKey
     @Column(length=6)
     // @DefaultValueCalculator(value=CalculadorSiguienteNumeroParaAnyo.class,
     // properties=@PropertyValue(name="anyo")
